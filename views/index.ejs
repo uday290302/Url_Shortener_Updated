@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Url_Shortner</title>
+<style>
+     a {
+        color:blue;
+     }
+     p{
+      display: inline;
+     }
+ span{
+      color:aliceblue;
+     }
+     #short{
+        width:250px
+     }
+     td {
+      text-align:center;
+      border: 2px solid #ffffff45;
+       border-radius: 2px;
+     }
+     th{
+      text-align:center;
+      border: 2px solid white;
+      border-radius: 2px;
+      flex: auto;
+     }
+     h1{
+      text-align:center;
+
+     }
+     table{
+      width: 100%;
+     }
+</style>
+</head>
+<div id=" names">
+  <h1 style="color: aliceblue;">Analytical Url Shortener</h1>
+
+</div>
+
+<body style="background-color: black;margin:10%">
+  <div class="container">
+    <h4 style="color: aliceblue;">Hi, <%=  Users %>. Nice to see you<br>Elevate your links, minimize the length – because every character counts in the language of the web</h4>
+    <form action="/url" method="POST" class="my-4 form-inline">
+      <label for="fullUrl" class="sr-only">Url</label>
+      <input required placeholder="https://example.com" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
+      <button style="background-color: rgb(0, 255, 72); color:black" class="btn btn-success" type="submit">Shrink</button>
+    </form>
+    
+    <table id="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th style="color: aliceblue;" >Full URL</th>
+          <th style="color: aliceblue;">Short URL</th>
+          <th style="color: aliceblue;">Clicks</th>
+          <th style="color: aliceblue;">Timestamp(History)</th>
+
+          
+        </tr>
+      </thead>
+      <tbody >
+        <% shortUrls.forEach(shortUrl => { %>
+          <tr>
+            <td><a href="<%= shortUrl.redirectURL %>" target="blank"> <%= shortUrl.redirectURL %></a></td>
+            <td id = short ><p  style="color:  #16db93;"><span>copy here:</span><br>s-6yrh.onrender.com/<%= shortUrl.shortId %> </p></td>
+            <td><p style="color:  #16db93;""><%= shortUrl.visitHistory.length %></p></td>
+            <td>
+              <% shortUrl.visitHistory.forEach(hist=>{    %>
+
+                <p style="color: blue;"> <%= hist.timestamp %>,<br>
+            <% }) %>
+          </p></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
