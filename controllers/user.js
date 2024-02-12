@@ -15,7 +15,7 @@ async function handleUserSignup(req, res) {
         email,
         password: hashedPassword,
       });
-      return res.redirect("signin");
+      return res.redirect("/");
     } catch (error) {
       console.error("Error during signup:", error);
       return res.status(500).render("error", {
