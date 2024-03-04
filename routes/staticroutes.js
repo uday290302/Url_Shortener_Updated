@@ -15,6 +15,6 @@ router.get('/signup',(req,res)=>{
     res.render('signup')
 })
 
-// router.get("/:shortId",redirectandanalytics );
+ router.get("/:shortId",redirectandanalytics );
 
 module.exports=router;
