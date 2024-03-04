@@ -30,6 +30,5 @@ try{
 console.log(err)
 }
 
-router.get("/:shortId",redirectandanalytics );
 
 module.exports = router;
